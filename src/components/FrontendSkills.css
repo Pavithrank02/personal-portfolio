@@ -1,0 +1,27 @@
+/* src/components/FrontendSkills.css */
+
+.skill-list {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  list-style-type: none;
+}
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Customize styles as needed */
