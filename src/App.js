@@ -1,11 +1,11 @@
 // src/App.js
 
-import AboutMe from './components/AboutMe';
+import AboutMe from './view/AboutMe';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProjectsPage from './components/ProjectsPage';
-import ContactPage from './components/ContactPage';
+import ProjectsPage from './view/ProjectsPage';
+import ContactPage from './view/ContactPage';
 
 const App = () => {
   return (

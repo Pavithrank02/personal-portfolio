@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container, Typography, Button, List, ListItem, ListItemText, Link, Grid, makeStyles, Paper } from '@mui/material';
-import './FrontendSkills.css';
+import '../components/FrontendSkills.css';
 
 const AboutMe = () => {
 
