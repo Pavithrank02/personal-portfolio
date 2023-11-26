@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledContainer = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -201,6 +202,11 @@ const UserInfoForm = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+  const removeProject = (projectId) => {
+    const updatedProjects = projects.filter((project) => project.id !== projectId);
+    setProjects(updatedProjects);
+  };
+
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -443,6 +449,16 @@ const UserInfoForm = () => {
                             accept="image/*"
                             onChange={(e) => handleProjectChange(e, project.id, 'image')}
                           />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            startIcon={<DeleteIcon />}
+                            onClick={() => removeProject(project.id)}
+                          >
+                            Remove Project
+                          </Button>
                         </Grid>
                       </Grid>
                     </AccordionDetails>
