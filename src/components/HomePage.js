@@ -3,6 +3,7 @@
 import React from 'react';
 import { Container, Typography, Button, List, ListItem,styled,  ListItemIcon, Link } from '@mui/material';
 import { GitHub, LinkedIn, Twitter, Instagram } from '@mui/icons-material';
+import UserInfoForm from './forms/UserInfoForm';
 
 const HomePage = () => {
   // Styled ListItemIcon to add hover animation
@@ -88,6 +89,9 @@ const AnimatedListItemIcon = styled(ListItemIcon)({
         <Button style={{fontSize: 'x-large', width: '15vw', height: "6vh", marginTop: '4vh'}} variant="contained" color="primary" component="a" href="/projects">
           Projects
         </Button>
+      </div>
+      <div>
+        <UserInfoForm />
       </div>
     </Container>
   );
