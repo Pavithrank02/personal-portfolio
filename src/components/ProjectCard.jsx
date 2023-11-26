@@ -6,13 +6,14 @@ const cardStyle = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  height: '100%',
+ 
   transition: 'transform 0.3s ease-in-out',
 };
 
 const mediaStyle = {
   paddingTop: '5.25%', // 16:9 aspect ratio (for the image)
   transition: 'transform 0.3s ease-in-out',
+  
 };
 
 const hoverEffect = {
@@ -23,7 +24,8 @@ const hoverEffectMedia = {
   transform: 'scale(1.1)',
 };
 
-const ProjectCard = ({ title, description, image }) => {
+const ProjectCard = ({ title, description, project }) => {
+  console.log(project.img)
   const handleMouseEnter = (e) => {
     e.currentTarget.style.transform = hoverEffect.transform;
     e.currentTarget.firstChild.style.transform = hoverEffectMedia.transform;
@@ -42,7 +44,7 @@ const ProjectCard = ({ title, description, image }) => {
     >
       <CardMedia
         component="img"
-        image={image}
+        image={project.img}
         alt={title}
         style={mediaStyle}
       />

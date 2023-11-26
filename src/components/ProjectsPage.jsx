@@ -9,6 +9,14 @@ import landing from '../assets/images/Landing Page.png'
 import youtube from '../assets/images/Youtube.png'
 import Netflix from '../assets/images/Netflix.png'
 
+const cardStyle = {
+  display: 'flex',
+  flexDirection: "column", 
+  justifyContents: "center",
+  alignItems: "center", 
+  height: '30%',
+  width: '50%',
+};
 const ProjectsPage = () => {
   // Your project data
   const projects = [
@@ -95,12 +103,13 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <div>
+    <div style={cardStyle}>
       <h1>Projects</h1>
       <div>
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
+            project={project}
             title={project.name}
             description={project.description}
           />
