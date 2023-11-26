@@ -171,21 +171,31 @@ const UserInfoForm = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log('Form submitted:', formData);
+      console.log('Form submitted:', formData, projects);
       setFormData({
         name: '',
         email: '',
         description: '',
         selectedOption: '',
         skills: [],
-
+        
       });
+      setProjects([{
+        id: projects.length + 1,
+        name: '',
+        description: '',
+        live: '',
+        source: '',
+        img: '',
+        stack: [],
+      }])
       setFormErrors({
         nameError: '',
         emailError: '',
         descriptionError: '',
         optionError: '',
       });
+      window.location.reload()
     }
   };
 
@@ -290,11 +300,11 @@ const UserInfoForm = () => {
                       required
                     >
                       <MenuItem value="">None</MenuItem>
-                      <MenuItem value="Option 1">Frontend Developer</MenuItem>
-                      <MenuItem value="Option 2">Backend Developer</MenuItem>
-                      <MenuItem value="Option 3">software Developer</MenuItem>
-                      <MenuItem value="Option 4">Project Manager</MenuItem>
-                      <MenuItem value="Option 5">Designer</MenuItem>
+                      <MenuItem value="Frontend Developer">Frontend Developer</MenuItem>
+                      <MenuItem value="Backend Developer">Backend Developer</MenuItem>
+                      <MenuItem value="software Developer">software Developer</MenuItem>
+                      <MenuItem value="Project Manager">Project Manager</MenuItem>
+                      <MenuItem value="Designer">Designer</MenuItem>
 
                     </Select>
                     {formErrors.optionError && (
@@ -464,16 +474,20 @@ const UserInfoForm = () => {
                     </AccordionDetails>
                   </Accordion>
                 ))}
-                <Button variant="contained" color="primary" onClick={addProject}>
-                  Add Project
-                </Button>
+                <Grid sx={{ marginTop: "10px" }}>
+                  <Button variant="contained" color="primary" onClick={addProject}>
+                    Add Project
+                  </Button>
+                </Grid>
                 {/* Other form elements or buttons can be added here */}
+                <Grid sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: "10px" }}>
+                  <Button onClick={handleBack}>Back</Button>
+                  <Button variant="contained" color="primary" onClick={handleSubmit}>
+                    Submit
+                  </Button>
+                </Grid>
               </Paper>
               {/* ... */}
-              <Button onClick={handleBack}>Back</Button>
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Submit
-              </Button>
             </form>
           )}
         </Grid>
