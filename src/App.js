@@ -5,6 +5,7 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProjectsPage from './components/ProjectsPage';
+import ContactPage from './components/ContactPage';
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
         {/* Add routes for other pages like Projects, About, Contact */}
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutMe />} />
-        {/* <Route path="/contact" component={ContactPage} /> */}
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </div>
   </Router>
