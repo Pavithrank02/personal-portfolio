@@ -6,11 +6,19 @@ import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProjectsPage from './view/ProjectsPage';
 import ContactPage from './view/ContactPage';
+import FontSelector from './components/fonts/FontSelector';
+import { useState } from 'react';
 
 const App = () => {
+  const [selectedFont, setSelectedFont] = useState('Arial');
+
+  // Function to handle font selection for the component
+  const handleSelectFont = (font) => {
+    setSelectedFont(font);
+  };
   return (
     <Router>
-    <div style={{ height: '100vh', overflowY: 'scroll' }}>
+    <div style={{ height: '100vh', overflowY: 'scroll', fontFamily: selectedFont }} >
       <Header />
       <Routes>
         {/* Define routes for different pages */}
@@ -19,6 +27,8 @@ const App = () => {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/font" element={<FontSelector selectedFont={selectedFont}
+        onSelectFont={handleSelectFont} /> } />
       </Routes>
     </div>
   </Router>
