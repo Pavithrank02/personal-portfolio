@@ -6,7 +6,7 @@ const cardStyle = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
- 
+  width: '100%',
   transition: 'transform 0.3s ease-in-out',
 };
 

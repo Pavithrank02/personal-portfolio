@@ -15,7 +15,8 @@ const cardStyle = {
   justifyContents: "center",
   alignItems: "center", 
   height: '30%',
-  width: '50%',
+  width: '100%',
+ 
 };
 const ProjectsPage = () => {
   // Your project data

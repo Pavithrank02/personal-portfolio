@@ -8,6 +8,7 @@ import ProjectsPage from './view/ProjectsPage';
 import ContactPage from './view/ContactPage';
 import FontSelector from './components/fonts/FontSelector';
 import { useState } from 'react';
+import UserInfoForm from './components/forms/UserInfoForm';
 
 const App = () => {
   const [selectedFont, setSelectedFont] = useState('Arial');
@@ -19,13 +20,13 @@ const App = () => {
   return (
     <Router>
     <div style={{ height: '100vh', overflowY: 'scroll', fontFamily: selectedFont }} >
-      <Header />
       <Routes>
         {/* Define routes for different pages */}
         <Route exact path="/" element={<HomePage />} />
         {/* Add routes for other pages like Projects, About, Contact */}
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutMe />} />
+        <Route path="/user" element={<UserInfoForm />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/font" element={<FontSelector selectedFont={selectedFont}
         onSelectFont={handleSelectFont} /> } />

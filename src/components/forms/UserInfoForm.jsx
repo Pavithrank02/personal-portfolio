@@ -46,7 +46,7 @@ const darkTheme = createTheme({
   },
 });
 
-const steps = ['Page 1', 'Page 2', 'Page 3'];
+const steps = ['Basic Info', 'Social Media and Skills Info', 'Project Info'];
 
 
 const UserInfoForm = () => {
@@ -227,7 +227,7 @@ const UserInfoForm = () => {
               User Info Form
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} >
             <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
             <Typography variant="body1" component="span">
               {darkMode ? 'Dark Mode' : 'Light Mode'}

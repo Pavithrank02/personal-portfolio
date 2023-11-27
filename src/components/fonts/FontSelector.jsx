@@ -6,7 +6,6 @@ const FontSelector = ({ selectedFont, onSelectFont }) => {
     'Times New Roman',
     'Verdana',
     'Georgia',
-    // Add more font options as needed
   ];
 
   const handleFontChange = (e) => {
