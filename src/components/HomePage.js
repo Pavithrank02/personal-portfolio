@@ -10,6 +10,8 @@ import {
   Button, createTheme, Grid, Switch, ThemeProvider,
 
 } from '@mui/material';
+import TemplateMaker from './template/TemplateMaker';
+import  {TemplateProvider}  from './template/TemplateProvider';
 import Footer from './Footer';
 
 
@@ -48,7 +50,7 @@ const HomePage = () => {
 
 
   return (
-    <>
+    <TemplateProvider>
       <Container maxWidth="md" style={containerStyle}>
         <Grid style={contentStyle}>
           <Grid>
@@ -88,7 +90,7 @@ const HomePage = () => {
       <Container maxWidth="lg" >
         <Footer />
       </Container>
-    </>
+    </TemplateProvider>
 
   );
 };

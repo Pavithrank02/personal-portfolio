@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Container, Typography, List, ListItem, ListItemText, Chip } from '@mui/material';
-import './FrontendSkills.css'; // Import CSS file for styles
 
 const FrontendSkills = () => {
 

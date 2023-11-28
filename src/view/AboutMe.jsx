@@ -2,16 +2,18 @@
 
 import React from 'react';
 import { Container, Typography, Button, Link, Grid, Paper } from '@mui/material';
-import '../components/FrontendSkills.css';
 import FrontendSkills from '../components/FrontendSkills';
+import { useTemplate } from '../components/template/TemplateProvider';
 
 const AboutMe = () => {
+  const { selectedAnimation, selectedFont } = useTemplate();
 
   const containerStyle = {
     minHeight: '100vh',
     textAlign: 'center',
     padding: '2rem 0',
-    
+    animation: selectedAnimation, 
+    fontFamily: selectedFont
   };
 
   const descriptionStyle = {

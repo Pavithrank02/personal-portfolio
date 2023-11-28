@@ -16,7 +16,7 @@ const cardStyle = {
 
 const ProjectCard = ({ title, description, img, link }) => {
   return (
-    <Card sx={cardStyle} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '60vh', width: '20vw' }}>
+    <Card sx={cardStyle} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '60vh', width: '18vw' }}>
       <Grid>
         <CardMedia component="img" alt={title} height="160" image={img} />
       </Grid>
