@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 // Replace the uri string with your connection string.
-// const uri = "mongodb+srv://pavithran:9790436040@cluster1.oxk2vdh.mongodb.net/t/";
+const uri = REACT_APP_LINK;
 const client = new MongoClient(uri);
 async function run() {
   try {
