@@ -34,26 +34,35 @@ const footerStyle = {
   animation: `${fadeIn} 1s ease-in-out`,
   padding: '20px',
   marginTop: '20px',
-  textAlign: 'center',
+  textAlign: 'left',
   borderTop: '1px solid #444',
 };
 
 const Footer = () => {
   return (
     <Container sx={footerStyle}>
-      <List sx={{}}>
-        {socialMediaLinks.map((item, index) => (
-          <Grid sx={{ justifyContent: 'left', display: 'flex', flexDirection: 'row', }}>
-            <ListItem key={index} >
-              <Link href={item.url} target="_blank" rel="noopener noreferrer" color="inherit">
-                <AnimatedListItemIcon >
-                  {item.icon}
-                </AnimatedListItemIcon>
-              </Link>
-            </ListItem>
-          </Grid>
-        ))}
-      </List>
+      <Grid sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Grid>
+          <Typography variant="h5">
+            You can contact me through these social profiles.
+          </Typography>
+        </Grid>
+        <Grid>
+          <List sx={{ justifyContent: 'right', display: 'flex', flexDirection: 'row', }}>
+            {socialMediaLinks.map((item, index) => (
+              <Grid sx={{}}>
+                <ListItem key={index} >
+                  <Link href={item.url} target="_blank" rel="noopener noreferrer" color="inherit">
+                    <AnimatedListItemIcon >
+                      {item.icon}
+                    </AnimatedListItemIcon>
+                  </Link>
+                </ListItem>
+              </Grid>
+            ))}
+          </List>
+        </Grid>
+      </Grid>
       <Typography variant="body2">
         © 2023 My Portfolio. All rights reserved.
       </Typography>

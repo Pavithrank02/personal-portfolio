@@ -41,7 +41,7 @@ const AboutMe = () => {
             <br />
             I'm open to Job opportunities where I can contribute, learn, and grow. If you have a good opportunity that matches my skills and experience, then don't hesitate to <Link href="mailto:youremail@example.com">contact me</Link>.
           </Typography>
-          <Button variant="contained" color="primary" component="a" href="/projects">
+          <Button variant="contained" color="primary" component="a" href="/projects" style={{marginTop: '10px'}}>
             Projects
           </Button>
         </Grid>
