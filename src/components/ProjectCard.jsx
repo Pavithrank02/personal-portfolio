@@ -1,59 +1,41 @@
-// src/components/ProjectCard.js
+// Project.js
+
 import React from 'react';
-import { Card, CardContent, Typography, CardMedia } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button, Grid } from '@mui/material';
 
 const cardStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  width: '100%',
+  margin: '20px',
+  padding: '20px',
+  border: '1px solid #ccc',
   transition: 'transform 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.05)',
+  },
+
 };
 
-const mediaStyle = {
-  paddingTop: '5.25%', // 16:9 aspect ratio (for the image)
-  transition: 'transform 0.3s ease-in-out',
-  
-};
-
-const hoverEffect = {
-  transform: 'scale(1.05)',
-};
-
-const hoverEffectMedia = {
-  transform: 'scale(1.1)',
-};
-
-const ProjectCard = ({ title, description, project }) => {
-  console.log(project.img)
-  const handleMouseEnter = (e) => {
-    e.currentTarget.style.transform = hoverEffect.transform;
-    e.currentTarget.firstChild.style.transform = hoverEffectMedia.transform;
-  };
-
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.transform = '';
-    e.currentTarget.firstChild.style.transform = '';
-  };
-
+const ProjectCard = ({ title, description, img, link }) => {
   return (
-    <Card
-      style={cardStyle}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <CardMedia
-        component="img"
-        image={project.img}
-        alt={title}
-        style={mediaStyle}
-      />
+    <Card sx={cardStyle} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '60vh', width: '20vw' }}>
+      <Grid>
+        <CardMedia component="img" alt={title} height="160" image={img} />
+      </Grid>
       <CardContent>
-        <Typography variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2">{description}</Typography>
-        {/* Add more content as needed */}
+        <Grid>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+        </Grid>
+        <Grid>
+          <Typography sx={{ textAlign: 'justify' }} variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button sx={{ marginTop: '10px' }} variant="contained" href={link} target="_blank" rel="noopener noreferrer">
+            View Project
+          </Button>
+        </Grid>
       </CardContent>
     </Card>
   );

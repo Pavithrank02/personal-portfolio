@@ -7,9 +7,10 @@ import '../components/FrontendSkills.css';
 const AboutMe = () => {
 
   const containerStyle = {
-    minHeight: '80vh',
+    minHeight: '100vh',
     textAlign: 'center',
     padding: '2rem 0',
+    
   };
 
   const descriptionStyle = {

@@ -18,6 +18,8 @@ const StyledContainer = styled('div')(({ theme }) => ({
   color: theme.palette.text.primary,
   padding: theme.spacing(4),
   transition: 'background-color 0.3s, color 0.3s',
+  height: '85.4vh',
+  marginTop: '3rem'
 }));
 
 const skillsList = [

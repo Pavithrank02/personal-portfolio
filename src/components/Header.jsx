@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'white', color: 'black' }}>
         {/* Logo and Name */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>

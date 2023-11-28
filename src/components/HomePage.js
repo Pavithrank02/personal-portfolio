@@ -96,7 +96,6 @@ const HomePage = () => {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <StyledContainer>
-          <Header />
         <Grid item xs={12} sx={{ marginTop: '2rem' }}>
           <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
           <Typography variant="body1" component="span">

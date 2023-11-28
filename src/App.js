@@ -20,6 +20,7 @@ const App = () => {
   return (
     <Router>
     <div style={{ height: '100vh', overflowY: 'scroll', fontFamily: selectedFont }} >
+      <Header />
       <Routes>
         {/* Define routes for different pages */}
         <Route exact path="/" element={<HomePage />} />
