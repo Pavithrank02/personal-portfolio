@@ -1,37 +1,23 @@
 // src/components/FrontendSkills.js
 
 import React from 'react';
-import { Container, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Typography, List, ListItem, ListItemText, Chip } from '@mui/material';
 import './FrontendSkills.css'; // Import CSS file for styles
 
 const FrontendSkills = () => {
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '80vh',
-    textAlign: 'center',
-  };
+
+  const skillsList = ['React', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Express', 'MongoDB'];
 
   return (
-    <Container maxWidth="md" style={containerStyle}>
-      <Typography variant="h3" gutterBottom>
-        Frontend Developer Skills
+    <Container>
+      <Typography variant="h5" gutterBottom>
+        Skills
       </Typography>
-      {/* Skill list with animation */}
-      <List className="skill-list">
-        <ListItem className="skill-item">
-          <ListItemText primary="HTML5" />
-        </ListItem>
-        <ListItem className="skill-item">
-          <ListItemText primary="CSS3" />
-        </ListItem>
-        <ListItem className="skill-item">
-          <ListItemText primary="JavaScript" />
-        </ListItem>
-        {/* Add more skills as needed */}
-      </List>
+      <div>
+        {skillsList.map((skill, index) => (
+          <Chip key={index} label={skill} style={{ margin: '4px' }} />
+        ))}
+      </div>
     </Container>
   );
 };
