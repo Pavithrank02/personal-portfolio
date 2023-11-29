@@ -1,6 +1,7 @@
-// client/src/app/store.js
+// store.js
+
 import { configureStore } from '@reduxjs/toolkit';
-import formDataReducer from '../components/features/formDataSlice'
+import formDataReducer from '../components/features/formDataSlice';
 
 const store = configureStore({
   reducer: {
