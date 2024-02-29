@@ -1,97 +1,84 @@
 // src/components/HomePage.js
 
-import React, { useState } from 'react';
-import { Container, Typography, List, ListItem, styled, Link } from '@mui/material';
-
+import React from 'react';
+import { Container, Typography, Grid, Button } from '@mui/material';
 import AboutMe from '../view/AboutMe';
 import ProjectsPage from '../view/ProjectsPage';
 import ContactForm from './ContactForm';
-import {
-  Button, createTheme, Grid, Switch, ThemeProvider,
-
-} from '@mui/material';
-import TemplateMaker from './template/TemplateMaker';
-import  {TemplateProvider}  from './template/TemplateProvider';
+import { personals } from '../constants';
 import Footer from './Footer';
-
-
+import { TemplateProvider } from './template/TemplateProvider';
+import Header from './Header';
 
 const HomePage = () => {
-
-
-  // Styled ListItemIcon to add hover animation
-
-
-
-
   const containerStyle = {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     minHeight: '100vh',
-
+    overflow: 'hidden', // Hide overflow to prevent unwanted scrollbars
+    transition: 'all 0.3s ease', // Add transition effect for smoother scrolling
   };
-
-
 
   const contentStyle = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
     padding: '3rem',
   };
-  const nameStyle = {
-    fontSize: '3rem',
-    marginBottom: '1rem',
-    fontWeight: 'bold',
-  };
 
+  const buttonStyle = {
+    fontSize: 'x-large',
+    width: '15vw',
+    height: '6vh',
+    marginTop: '4vh',
+  };
 
   return (
     <TemplateProvider>
-      <Container maxWidth="md" style={containerStyle}>
-        <Grid style={contentStyle}>
-          <Grid>
-            <Typography variant="h3" style={nameStyle}>
-              Hi! I am Pavithran K
+      <Container maxWidth="lg" style={containerStyle}>
+        <Grid container style={contentStyle}>
+          <Grid item xs={12}>
+            <Typography variant="h3" gutterBottom>
+              {personals.name}
             </Typography>
-          </Grid>
-          <Grid>
             <Typography variant="h5" gutterBottom>
-              Frontend Developer
+              {personals.role}
             </Typography>
-          </Grid>
-          <Grid>
-            <Typography variant="h3" gutterBottom sx={{ textAlign: 'left' }}>
-              Building Delightful Design Experiences for Users
+            <Typography variant="h3" gutterBottom>
+              {personals.moto}
             </Typography>
-          </Grid>
-          <Grid>
-            <Button style={{ fontSize: 'x-large', width: '15vw', height: "6vh", marginTop: '4vh' }} variant="contained" color="primary" component="a" href="/projects">
+            <Button
+              style={buttonStyle}
+              variant="contained"
+              color="primary"
+              component="a"
+              href="/projects"
+            >
               Projects
             </Button>
-
           </Grid>
         </Grid>
-
-        {/* Rest of your content */}
       </Container>
-      <Container maxWidth="md">
+
+      <Container maxWidth="lg" style={containerStyle}>
         <AboutMe />
       </Container>
-      <Container minWidth="lg" >
+
+      <Container maxWidth="lg" style={containerStyle}>
         <ProjectsPage />
       </Container>
-      <Container maxWidth="lg" >
+
+      <Container maxWidth="lg" style={containerStyle}>
         <ContactForm />
       </Container>
-      <Container maxWidth="lg" >
+
+      <Container maxWidth="lg" style={containerStyle}>
         <Footer />
       </Container>
     </TemplateProvider>
-
   );
 };
 

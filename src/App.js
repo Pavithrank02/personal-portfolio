@@ -9,6 +9,7 @@ import ContactPage from './view/ContactPage';
 import FontSelector from './components/fonts/FontSelector';
 import { useState } from 'react';
 import UserInfoForm from './components/forms/UserInfoForm';
+import { toggleTheme } from './components/features/themeSlice';
 
 import { Button, createTheme, Grid, Switch, ThemeProvider, Typography, styled } from '@mui/material';
 import DataComponent from './components/DataComponent';
@@ -51,14 +52,14 @@ const App = () => {
     <Router>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <StyledContainer>
+          <Grid item xs={12} sx={{ marginTop: '2rem' }}>
+            <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
+            <Typography variant="body1" component="span">
+              {darkMode ? 'Light Mode' : 'Dark Mode'}
+            </Typography>
+          </Grid>
           <div style={{ height: '100vh', overflowY: 'scroll', fontFamily: selectedFont }} >
-            <Grid item xs={12} sx={{ marginTop: '2rem' }}>
-              <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
-              <Typography variant="body1" component="span">
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-              </Typography>
-            </Grid>
-            {/* <Header /> */}
+            <Header />
             <Routes>
               {/* Define routes for different pages */}
               <Route exact path="/" element={<HomePage />} />
