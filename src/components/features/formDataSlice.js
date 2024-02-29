@@ -1,34 +1,23 @@
 // formDataSlice.js
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export const submitFormData = createAsyncThunk('formData/submit', async (formData) => {
-  const response = await axios.post('http://localhost:5000/submit-form', formData);
-  console.log(response)
-  return response.data;
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const formDataSlice = createSlice({
   name: 'formData',
   initialState: {
-    status: 'idle',
-    error: null,
+    data: {},
+    projects: [],
   },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(submitFormData.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(submitFormData.fulfilled, (state) => {
-        state.status = 'succeeded';
-      })
-      .addCase(submitFormData.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
+  reducers: {
+    submitFormData: (state, action) => {
+      state.data = action.payload.formData;
+      state.projects = action.payload.projects;
+    },
   },
 });
-export const selectFormDataStatus = (state) => state.formData.status;
+
+export const { submitFormData } = formDataSlice.actions;
+export const selectFormData = (state) => state.formData.data;
+export const selectFormProjects = (state) => state.formData.projects;
+
 export default formDataSlice.reducer;

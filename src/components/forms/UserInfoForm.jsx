@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   TextField, Button, createTheme, Grid, Select, MenuItem, FormControl, InputLabel, Switch, Typography, ThemeProvider, Stepper,
   Step,
@@ -12,14 +13,17 @@ import {
 import { styled, useTheme } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { submitFormData } from '../features/formDataSlice';
+import { selectFormData, selectFormProjects } from '../features/formDataSlice';
 
 const StyledContainer = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   color: theme.palette.text.primary,
   padding: theme.spacing(4),
   transition: 'background-color 0.3s, color 0.3s',
-  height: '85.4vh',
-  marginTop: '3rem'
+  height: '100vh',
+  width: '60vw',
+
 }));
 
 const skillsList = [
@@ -53,7 +57,10 @@ const steps = ['Basic Info', 'Social Media and Skills Info', 'Project Info'];
 
 const UserInfoForm = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
+  const formDataStatus = useSelector(selectFormData);
+  const formProjects = useSelector(selectFormProjects);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -169,10 +176,51 @@ const UserInfoForm = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
+      try {
+        const formData = new FormData();
+
+        formData.append('name', formData.name);
+        formData.append('email', formData.email);
+        formData.append('description', formData.description);
+        formData.append('selectedOption', formData.selectedOption);
+        formData.append('skills', JSON.stringify(formData.skills));
+        formData.append('git', formData.git);
+        formData.append('linkedin', formData.linkedin);
+        formData.append('other', formData.other);
+
+        projects.forEach((project) => {
+          formData.append('projects', JSON.stringify(project));
+        });
+      
+        const response = await fetch('http://localhost:3001/submitForm', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Form submitted successfully:', result.savedForm);
+
+          // Dispatch the action to update the Redux store
+          dispatch(submitFormData({ formData, projects }));
+
+          // Clear form data and navigate to the next step or perform other actions
+        } else {
+          console.error('Failed to submit form:', response.statusText);
+          // Handle error accordingly
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        // Handle error accordingly
+      }
+      console.log('Sending form data:', formData);
+
+      // Example on the server side
+      // console.log('Received form data:', formFields);
       console.log('Form submitted:', formData, projects);
       setFormData({
         name: '',
@@ -180,7 +228,7 @@ const UserInfoForm = () => {
         description: '',
         selectedOption: '',
         skills: [],
-        
+
       });
       setProjects([{
         id: projects.length + 1,
@@ -197,7 +245,7 @@ const UserInfoForm = () => {
         descriptionError: '',
         optionError: '',
       });
-      window.location.reload()
+      // window.location.reload()
     }
   };
 
@@ -229,12 +277,12 @@ const UserInfoForm = () => {
               User Info Form
             </Typography>
           </Grid>
-          <Grid item xs={12} >
+          {/* <Grid item xs={12} >
             <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
             <Typography variant="body1" component="span">
               {darkMode ? 'Dark Mode' : 'Light Mode'}
             </Typography>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sx={{ marginBottom: '30px' }}>
             <Stepper activeStep={activeStep}>
               {steps.map((label) => (
@@ -406,10 +454,8 @@ const UserInfoForm = () => {
           {activeStep === 2 && (
             <form>
               {/* Page 3 content */}
-              <Paper elevation={3} style={{ padding: '20px' }}>
-                <Typography variant="h4" align="center" gutterBottom>
-                  Project Form
-                </Typography>
+              <Paper elevation={3} style={{ padding: '10px', marginTop: '-20px' }}>
+
                 {projects.map((project, index) => (
                   <Accordion key={project.id} defaultExpanded={index === projects.length - 1}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>

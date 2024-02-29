@@ -9,6 +9,7 @@ import forkify from '../assets/images/Forkify Website.png'
 import landing from '../assets/images/Landing Page.png'
 import youtube from '../assets/images/Youtube.png'
 import Netflix from '../assets/images/Netflix.png'
+import { useTemplate } from '../components/template/TemplateProvider';
 
 const cardStyle = {
   display: 'flex',
@@ -32,6 +33,7 @@ const containerStyle = {
 };
 
 const ProjectsPage = () => {
+  const { selectedAnimation, selectedFont } = useTemplate();
   // Your project data
   const projects = [
     {
@@ -119,7 +121,7 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <Container sx={containerStyle}>
+    <Container sx={containerStyle} style={{ animation: selectedAnimation, fontFamily: selectedFont }}>
       <Typography variant="h2" align="center" gutterBottom>
         My Portfolio
       </Typography>

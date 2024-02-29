@@ -10,7 +10,8 @@ import FontSelector from './components/fonts/FontSelector';
 import { useState } from 'react';
 import UserInfoForm from './components/forms/UserInfoForm';
 
-import { Button, createTheme, Grid, Switch, ThemeProvider, Typography,styled}from '@mui/material';
+import { Button, createTheme, Grid, Switch, ThemeProvider, Typography, styled } from '@mui/material';
+import DataComponent from './components/DataComponent';
 const StyledContainer = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   color: theme.palette.text.primary,
@@ -50,14 +51,14 @@ const App = () => {
     <Router>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <StyledContainer>
-          <Grid item xs={12} sx={{ marginTop: '2rem' }}>
-            <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
-            <Typography variant="body1" component="span">
-              {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </Typography>
-          </Grid>
           <div style={{ height: '100vh', overflowY: 'scroll', fontFamily: selectedFont }} >
-            <Header />
+            <Grid item xs={12} sx={{ marginTop: '2rem' }}>
+              <Switch checked={darkMode} onChange={handleThemeToggle} color="primary" />
+              <Typography variant="body1" component="span">
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+              </Typography>
+            </Grid>
+            {/* <Header /> */}
             <Routes>
               {/* Define routes for different pages */}
               <Route exact path="/" element={<HomePage />} />
@@ -66,6 +67,7 @@ const App = () => {
               <Route path="/about" element={<AboutMe />} />
               <Route path="/user" element={<UserInfoForm />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/data" element={<DataComponent />} />
               <Route path="/font" element={<FontSelector selectedFont={selectedFont}
                 onSelectFont={handleSelectFont} />} />
             </Routes>
