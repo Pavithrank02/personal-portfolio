@@ -44,7 +44,7 @@ const App = () => {
     setDarkMode(!darkMode);
   };
 
-  // Function to handle font selection for the component
+  // Function to handle font selection for the components
   const handleSelectFont = (font) => {
     setSelectedFont(font);
   };
