@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <TemplateProvider>
       <AppBar position="fixed">
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'white', color: 'black' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', color: 'black' }}>
           {/* Logo and Name */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
