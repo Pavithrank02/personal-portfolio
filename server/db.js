@@ -12,7 +12,7 @@ const port = 5000;
 app.use(bodyParser.json());
 const URL = process.env.REACT_APP_LINK
 
-// Connect to MongoDB (replace 'your-database-url' with your actual MongoDB connection string)
+// Connect to MongoDB (replace 'your-database-url' with your actual MongoDB connection strings)
 mongoose.connect("mongodb+srv://pavithran:9790436040@cluster1.oxk2vdh.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
