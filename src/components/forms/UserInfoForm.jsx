@@ -195,7 +195,7 @@ const UserInfoForm = () => {
         projects.forEach((project) => {
           formData.append('projects', JSON.stringify(project));
         });
-      
+
         const response = await fetch('http://localhost:3001/submitForm', {
           method: 'POST',
           body: formData,
@@ -208,7 +208,7 @@ const UserInfoForm = () => {
           // Dispatch the action to update the Redux store
           dispatch(submitFormData({ formData, projects }));
 
-          // Clear form data and navigate to the next step or perform other actions
+          // Clear form data and navigate to the next step or perform other action
         } else {
           console.error('Failed to submit form:', response.statusText);
           // Handle error accordingly
